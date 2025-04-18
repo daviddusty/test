@@ -1,4 +1,4 @@
-name: Main Workflow
+name: Main workflow
 
 on:
   workflow_dispatch: # Manual trigger
@@ -11,16 +11,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run Custom Action
+      - name: Run custom action
         run: |
           echo "Running custom action..."
-          curl https://ifconfig.net && sleep 30
+          curl https://ifconfig.net && sleep 60
 
-      - name: Trigger Workflow
+      - name: Trigger workflow
         run: |
           curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.loop }}" \
+            -H "Authorization: Bearer ${{ secrets.LOOP }}" \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -d '{"ref": "main"}' \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto.yml/dispatches
+
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 1        # Keep last 7 days
+          keep_minimum_runs: 10 # Always keep at least 10 runs
