@@ -17,7 +17,15 @@ jobs:
       - name: Run custom action
         run: |
           echo "Running custom action..."
-          curl https://ifconfig.net && sleep 10m
+          echo "-------------"
+          curl \
+            --silent \
+            --show-error \
+            https://ifconfig.net
+          echo "-------------"
+          free -h
+          echo "-------------"
+          sleep 10m
 
       - name: Trigger workflow
         run: |
