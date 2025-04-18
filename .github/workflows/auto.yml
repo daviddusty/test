@@ -1,0 +1,13 @@
+name: Run auto
+
+on:
+  workflow_dispatch: # (Optional) allows manual trigger
+
+jobs:
+  curl_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call API with curl
+        run: curl https://ifconfig.net && sleep 30
+
+      - uses: ./.github/workflow/auto.yml
