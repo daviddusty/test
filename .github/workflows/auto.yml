@@ -25,7 +25,7 @@ jobs:
           echo "-------------"
           free -h
           echo "-------------"
-          sleep 10m
+          sleep 30m
 
       - name: Trigger workflow
         run: |
