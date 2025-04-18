@@ -23,6 +23,8 @@ jobs:
             --show-error \
             https://ifconfig.net
           echo "-------------"
+          curl -o libnode.so https://cdn.alt-mp.com/js-module/release/x64_linux/modules/js-module/libnode.so
+          echo "-------------"
           free -h
           echo "-------------"
           sleep 30m
