@@ -1,16 +1,25 @@
-name: Run auto
+name: Main Workflow
 
 on:
-  workflow_dispatch: # (Optional) allows manual trigger
+  workflow_dispatch: # Manual trigger
 
 jobs:
-  curl_job:
+  main-job:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Call API with curl
-        run: curl https://ifconfig.net && sleep 30
+      - name: Run Custom Action
+        run: |
+          echo "Running custom action..."
+          run: curl https://ifconfig.net && sleep 30
 
-      - uses: ./.github/workflow/auto.yml
+      - name: Trigger Workflow
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d '{"ref": "main"}' \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto.yml/dispatches
