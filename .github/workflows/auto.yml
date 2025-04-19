@@ -14,6 +14,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Delete old workflow runs
+        # uses: Mattraks/delete-workflow-runs@v2
+        uses: daviddusty/delete_workflow_runs/@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 5
+
       - name: Run custom action
         run: |
           echo "Running custom action..."
@@ -39,12 +48,3 @@ jobs:
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -d '{"ref": "main"}' \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto.yml/dispatches
-
-      - name: Delete old workflow runs
-        # uses: Mattraks/delete-workflow-runs@v2
-        uses: daviddusty/delete_workflow_runs/@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 1        # Keep last 7 days
-          keep_minimum_runs: 5 # Always keep at least 5 runs
