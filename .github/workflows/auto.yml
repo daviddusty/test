@@ -38,6 +38,12 @@ jobs:
           echo "-------------"
           nproc
           echo "-------------"
+          echo "Disk info 1"
+          fdisk -l
+          echo "-------------"
+          echo "Disk info 2"
+          lsblk
+          echo "-------------"
           sleep 30m
 
       - name: Trigger workflow
