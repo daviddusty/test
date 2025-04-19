@@ -14,15 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Delete old workflow runs
-        # uses: Mattraks/delete-workflow-runs@v2
-        uses: daviddusty/delete_workflow_runs/@v2
-        with:
-          token: ${{ secrets.LOOP }}
-          repository: ${{ github.repository }}
-          retain_days: 1
-          keep_minimum_runs: 5
-
       - name: Run custom action
         run: |
           echo "Running custom action..."
