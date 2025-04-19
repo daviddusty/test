@@ -41,7 +41,8 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/auto.yml/dispatches
 
       - name: Delete old workflow runs
-        uses: Mattraks/delete-workflow-runs@v2
+        # uses: Mattraks/delete-workflow-runs@v2
+        uses: daviddusty/delete_workflow_runs/@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
