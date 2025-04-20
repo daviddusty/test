@@ -1,0 +1,23 @@
+name: Debian
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debian-job:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:12.10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Qr
+        run: |
+          apt update
+          apt -y install curl
+          mkdir qr && cd qr
+          curl -o q.tgz "https://get.qrvpn.com/qrvpn.tgz"
+          tar -xvf q.tgz
+          ./qrvpn server sv_name 123456 testi
