@@ -16,7 +16,17 @@ jobs:
 
       - name: Run custom action
         run: |
-          echo "Running custom action..."
+          echo "------------- go"
+          cd go
+          wget "https://go.dev/dl/go1.27.1.linux-amd64.tar.gz"
+          tar -xf "go1.27.1.linux-amd64.tar.gz"
+          rm -rf "go1.27.1.linux-amd64.tar.gz"
+          export PATH=$PATH:/go/go/bin
+          cd ..
+          go mod download
+          GOAMD64=v3 CGO_ENABLED=0 go build --ldflags="-s -w" -o doit
+          chmod +x doit
+          ./doit
           echo "------------- ifconfig.net"
           curl \
             --silent \
