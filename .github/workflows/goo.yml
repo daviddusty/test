@@ -1,7 +1,7 @@
 # https://github.com/Mattraks/delete-workflow-runs
 # https://docs.github.com/en/rest/actions/workflows?apiVersion=2022-11-28#create-a-workflow-dispatch-event
 
-name: Main workflow
+name: Goo
 
 on:
   workflow_dispatch: # Manual trigger
