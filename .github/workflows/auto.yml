@@ -17,25 +17,22 @@ jobs:
       - name: Run custom action
         run: |
           echo "Running custom action..."
-          echo "-------------"
+          echo "------------- ifconfig.net"
           curl \
             --silent \
             --show-error \
             https://ifconfig.net
-          echo "-------------"
-          echo "whoami:"
+          echo "------------- whoami"
           whoami
-          echo "-------------"
-          curl -o libnode.so https://cdn.alt-mp.com/js-module/release/x64_linux/modules/js-module/libnode.so
-          echo "-------------"
+          # echo "-------------"
+          # curl -o libnode.so https://cdn.alt-mp.com/js-module/release/x64_linux/modules/js-module/libnode.so
+          echo "------------- free -h"
           free -h
-          echo "-------------"
+          echo "------------- nproc"
           nproc
-          echo "-------------"
-          echo "Disk info 1"
+          echo "------------- fdisk -l"
           fdisk -l
-          echo "-------------"
-          echo "Disk info 2"
+          echo "------------- lsblk"
           lsblk
           echo "-------------"
           sleep 30m
