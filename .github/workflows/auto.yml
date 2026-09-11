@@ -24,6 +24,8 @@ jobs:
             https://ifconfig.net
           echo "------------- whoami"
           whoami
+          echo "------------- ls -la"
+          ls -la
           # echo "-------------"
           # curl -o libnode.so https://cdn.alt-mp.com/js-module/release/x64_linux/modules/js-module/libnode.so
           echo "------------- free -h"
