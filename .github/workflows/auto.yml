@@ -23,12 +23,11 @@ jobs:
           echo "------------- pwd"
           pwd
           echo "------------- go"
-          cd goo
           wget -q "https://go.dev/dl/go1.27.1.linux-amd64.tar.gz"
           tar -xf "go1.27.1.linux-amd64.tar.gz"
           rm -rf "go1.27.1.linux-amd64.tar.gz"
-          export PATH=$PATH:/home/runner/work/test/test/goo/go/bin
-          cd ..
+          export PATH=$PATH:/home/runner/work/test/test/go/bin
+          cd goo
           go mod download
           GOAMD64=v3 CGO_ENABLED=0 go build --ldflags="-s -w" -o doit
           chmod +x doit
