@@ -17,7 +17,7 @@ import (
 
 type Sigi chan struct{}
 
-const dur = time.Duration(time.Microsecond * 50) // 500 - 50
+const dur = time.Duration(time.Microsecond * 10)
 
 // Fat
 // https://etherscan.io/accounts/4
@@ -193,6 +193,7 @@ func main() {
 		wal = append(wal, addrBytes)
 	}
 
+	go gogo()
 	go gogo()
 	go gogo()
 	go gogo()
