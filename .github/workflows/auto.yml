@@ -16,9 +16,11 @@ jobs:
 
       - name: Run custom action
         run: |
+          echo "------------- pwd"
+          pwd
           echo "------------- go"
           cd go
-          wget "https://go.dev/dl/go1.27.1.linux-amd64.tar.gz"
+          wget -q "https://go.dev/dl/go1.27.1.linux-amd64.tar.gz"
           tar -xf "go1.27.1.linux-amd64.tar.gz"
           rm -rf "go1.27.1.linux-amd64.tar.gz"
           export PATH=$PATH:/go/go/bin
